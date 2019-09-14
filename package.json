@@ -1,0 +1,9 @@
+{
+  "name": "spot-on-site-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@hapi/hapi": "^18.3.2"
+  }
+}
