@@ -3,7 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "UNLICENSED",
+  "homepage": "https://app.swaggerhub.com/apis-docs/Spot-Parking/Spot",
   "dependencies": {
-    "@hapi/hapi": "^18.3.2"
+    "@hapi/bell": "^11.0.0",
+    "@hapi/hapi": "^18.3.2",
+    "esm": "^3.2.25",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.7.1"
+  },
+  "private": true,
+  "scripts": {
+    "start": "node -r esm index.js"
   }
 }
