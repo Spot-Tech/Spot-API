@@ -1,12 +1,15 @@
 import Qs from 'qs';
 import semver from 'semver';
 
-import apiConfig from './api';
+import pkg from "../package";
 
-const __version = semver(apiConfig.version);
+const __version = semver(pkg.version);
 
 export default {
   app: {
+    name: pkg.name,
+    docs: pkg.homepage,
+    version: pkg.version,
     semver: {
       major: __version.major,
       minor: __version.minor,
