@@ -9,7 +9,9 @@
     "@hapi/hapi": "^18.3.2",
     "esm": "^3.2.25",
     "lodash": "^4.17.15",
-    "mongoose": "^5.7.1"
+    "mongoose": "^5.7.1",
+    "qs": "^6.8.0",
+    "semver": "^6.3.0"
   },
   "private": true,
   "scripts": {
