@@ -1,9 +1,13 @@
 import serverConfig from "./config/server.js";
+import routes from './lib/routes';
 
-import Hapi from "@hapi/hapi";
+import Hapi from '@hapi/hapi';
 
 const init = async () => {
     const server = Hapi.server(serverConfig);
+
+    // Set up the routes
+    server.route(routes);
 
     await server.start();
 

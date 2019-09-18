@@ -7,10 +7,15 @@ const __version = semver(apiConfig.version);
 
 export default {
   app: {
-    staticConfigKey: "staticConfigValue"
+    semver: {
+      major: __version.major,
+      minor: __version.minor,
+      patch: __version.patch
+    },
+    env: `${process.env.NODE_ENV === 'production' ? 'production' : 'development'}`
   },
   host: 'localhost',
-  port: 3000,
+  port: process.env.PORT,
   query: {
     parser: (query) => Qs.parse(query)
   },
