@@ -1,7 +1,0 @@
-{
-  "app": {
-    "staticConfigKey": "staticConfigValue"
-  },
-  "port": 3000,
-  "host": "localhost"
-}

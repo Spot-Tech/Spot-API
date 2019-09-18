@@ -1,9 +1,8 @@
-import serverConfig from "./config/server.json";
+import serverConfig from "./config/server.js";
 
 import Hapi from "@hapi/hapi";
 
 const init = async () => {
-
     const server = Hapi.server(serverConfig);
 
     await server.start();
