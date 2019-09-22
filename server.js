@@ -8,6 +8,8 @@ import jwtConfig from './config/jwt.js';
 import databaseConfig from './config/database';
 import serverConfig from './config/server.js';
 
+import models from './lib/models';
+
 const prepDatabase = async () => {
     // Connect to the database
     await mongoose
