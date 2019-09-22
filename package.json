@@ -5,8 +5,8 @@
   "license": "UNLICENSED",
   "homepage": "https://app.swaggerhub.com/apis-docs/Spot-Parking/Spot",
   "dependencies": {
-    "@hapi/bell": "^11.0.0",
-    "@hapi/hapi": "^18.3.2",
+    "@hapi/hapi": "^18.4.0",
+    "@hapi/joi": "^16.1.4",
     "esm": "^3.2.25",
     "hapi-auth-jwt2": "^8.6.2",
     "lodash": "^4.17.15",
