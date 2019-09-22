@@ -1,10 +1,10 @@
 import Hapi from '@hapi/hapi';
 import mongoose from 'mongoose';
 import path from 'path';
-import authJwt2 from 'hapi-auth-jwt2';
+import authBearer from 'hapi-auth-bearer-token';
 import wurst from 'wurst';
 
-import jwtConfig from './config/jwt.js';
+import authConfig from './config/auth.js';
 import databaseConfig from './config/database';
 import serverConfig from './config/server.js';
 
@@ -19,12 +19,12 @@ const prepDatabase = async () => {
 const initServer = async () => {
     const server = Hapi.server(serverConfig);
 
-    // Register JWT Auth plugin
-    await server.register(authJwt2);
+    // Register Auth Bearer plugin
+    await server.register(authBearer);
 
-    server.auth.strategy('jwt', 'jwt', jwtConfig);
+    server.auth.strategy('bearer', 'bearer-access-token', authConfig);
 
-    server.auth.default('jwt');
+    server.auth.default('bearer');
 
     // Register Wurst plugin
     await server.register({
