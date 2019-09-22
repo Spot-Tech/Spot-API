@@ -1,17 +1,30 @@
 import Hapi from '@hapi/hapi';
+import mongoose from 'mongoose';
 import path from 'path';
+import authJwt2 from 'hapi-auth-jwt2';
 import wurst from 'wurst';
 
-import serverConfig from "./config/server.js";
+import jwtConfig from './config/jwt.js';
+import databaseConfig from './config/database';
+import serverConfig from './config/server.js';
 
-const init = async () => {
+const prepDatabase = async () => {
+    // Connect to the database
+    await mongoose
+        .connect(databaseConfig.uri, databaseConfig.options);
+};
+
+const initServer = async () => {
     const server = Hapi.server(serverConfig);
 
-    console.log(path.join(__dirname, 'lib/routes/oauth2/token/routes.js'));
+    // Register JWT Auth plugin
+    await server.register(authJwt2);
 
-    const testRoutes = require(path.join(__dirname, 'lib/routes/oauth2/token/routes.js'));
+    server.auth.strategy('jwt', 'jwt', jwtConfig);
 
-    console.log(JSON.stringify(testRoutes, null, 4));
+    server.auth.default('jwt');
+
+    // Register Wurst plugin
     await server.register({
         plugin: wurst,
         options: {
@@ -24,6 +37,8 @@ const init = async () => {
     await server.start();
 
     console.log('Server running on %s', server.info.uri);
+
+    return true;
 };
 
 process.on('unhandledRejection', (err) => {
@@ -31,4 +46,18 @@ process.on('unhandledRejection', (err) => {
     process.exit(1);
 });
 
-init();
+prepDatabase()
+    .then(
+        () => {
+            console.log(`Database connection to ${databaseConfig.uri} is successful.\nThe following options were applied: ${JSON.stringify(databaseConfig.options)}`);
+
+            console.log(`Initializing the server...`);
+
+            return initServer();
+        },
+        error => {
+            console.error(error);
+
+            console.error(`Server startup failed...`);
+        }
+    );
