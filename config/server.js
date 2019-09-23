@@ -26,5 +26,5 @@ export default {
     isCaseSensitive: false,
     stripTrailingSlash: true
   },
-  uri: `https://api.spotparking.com.sg/v${__version.major}.${__version.minor}`
+  uri: `https://api${process.env.NODE_ENV === 'production' ? '' : '-sandbox'}.spotparking.com.sg/v${__version.major}.${__version.minor}`
 };
