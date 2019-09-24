@@ -9,11 +9,11 @@ module.exports = {
         max_memory_restart: '1G',
         env: {
             NODE_ENV: 'development',
-            DB_URI: 'mongodb://10.130.255.26:27017/spot'
+            DB_URI: 'mongodb://localhost:27017/spot'
         },
         env_production: {
             NODE_ENV: 'production',
-            DB_URI: 'mongodb://10.130.255.26:27017/spot'
+            DB_URI: 'mongodb://localhost:27017/spot'
         }
     }],
 
