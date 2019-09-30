@@ -14,7 +14,8 @@ export default {
         const isValid = !_.isNil(tokenInDb) && token === tokenInDb.accessToken;
 
         const credentials = { token };
-        const artifacts = _.cloneDeep(tokenInDb.metadata);
+        // const artifacts = _.cloneDeep(tokenInDb.metadata);
+        const artifacts = {};
 
         return { isValid, credentials, artifacts };
     }
